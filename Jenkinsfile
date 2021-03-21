@@ -1,5 +1,5 @@
 pipeline {
-  agnt any
+  agent any
   stages {
     satge('build') {
       steps {
