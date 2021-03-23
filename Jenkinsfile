@@ -16,7 +16,7 @@ pipeline {
             steps {
                 input 'Does the staging environment look OK?'
                 milestone(1)
-                withCredentials([string(credentialsId: 'webserver_login', variable: 'USERPASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
@@ -24,7 +24,7 @@ pipeline {
                             sshPublisherDesc(
                                 configName: 'staging',
                                 sshCredentials: [
-                                    username: 'yossdev',
+                                    username: '"$USERNAME",
                                     encryptedPassphrase: "$USERPASS"
                                 ], 
                                 transfers: [
