@@ -23,7 +23,7 @@ pipeline {
                         publishers: [
                             sshPublisherDesc(
                                 configName: 'staging',
-                                verbose: true
+                                verbose: true,
                                 sshCredentials: [
                                     username: "$USERNAME",
                                     encryptedPassphrase: "$USERPASS"
